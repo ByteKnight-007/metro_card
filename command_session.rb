@@ -3,7 +3,7 @@ require_relative 'fare_constants'
 
 class CommandSession
   attr_reader :passengers, :collection_summary, :passenger_summary
-
+  
   def initialize
     @passengers = {}
     @collection_summary = Hash.new { |h, k| h[k] = { collected: 0, discount: 0 } }
@@ -27,12 +27,7 @@ class CommandSession
   end
 
   def handle_balance(card_number, balance)
-    card = @passengers[card_number]
-    if card
-      card.recharge(balance.to_i)
-    else
-      @passengers[card_number] = MetroCard.new(card_number, balance.to_i)
-    end
+    @passengers[card_number] = MetroCard.new(card_number, balance.to_i)
   end
 
   def handle_check_in(card_number, passenger_type, station)
