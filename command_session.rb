@@ -11,21 +11,6 @@ class CommandSession
     @travelling_card = []
   end
 
-  def process_command(command)
-    action, *params = command.split
-
-    case action
-    when 'BALANCE'
-      handle_balance(*params)
-    when 'CHECK_IN'
-      handle_check_in(*params)
-    when 'PRINT_SUMMARY'
-      print_summary
-    else
-      puts "Invalid command: #{command}"
-    end
-  end
-
   def handle_balance(card_number, balance)
     @passengers[card_number] = MetroCard.new(card_number, balance.to_i)
   end
@@ -70,6 +55,8 @@ class CommandSession
   def print_summary
     [:CENTRAL, :AIRPORT].each do |station|
       summary = @collection_summary[station]
+      next if summary.empty?
+
       puts "TOTAL_COLLECTION #{station.upcase} #{summary[:collected].to_i} #{summary[:discount].to_i}"
       puts 'PASSENGER_TYPE_SUMMARY'
       @passenger_summary[station.to_sym].each do |type, count|
