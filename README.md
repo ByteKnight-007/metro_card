@@ -11,7 +11,7 @@ Use `run.sh` if you are Linux/Unix/macOS Operating systems and `run.bat` if you 
 Internally both the scripts run the following commands 
 
  * `bundle install` - We will install the dependencies and then build the solution by using the following command.
- * We will execute the program using the command `ruby -W0 geektrust.rb sample_input/input1.txt`
+ * We will execute the program using the command `ruby -W0 geektrust.rb sample_input/input1.txt` .
 
 We expect your program to take the location to the text file as parameter. Input needs to be read from a text file, and output should be printed to the console. The text file will contain only commands in the format prescribed by the respective problem.
 
