@@ -32,7 +32,7 @@ Create a Rakefile with a `default task`. The rake file should import the `main` 
 * test
 * tests
 
-We run the unit tests and calculate the coverage executing the command
+We run the unit tests and calculate the coverage executing the command.
 
 `rspec`
 
